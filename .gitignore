@@ -1,0 +1,38 @@
+# Maven target directory
+/target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+/nb-configuration.xml
+
+# macOS
+.DS_Store
+
+# Compiled bytecode
+*.class
+
+# Maven configuration file
+#pom.xml.tag
+#pom.xml.releaseBackup
+#release.properties
+
+# Maven artifacts
+release/
+
+# Logs
+log/
+logs/
+*.log
+
+# Temporary files
+*.swp
+
+# Ignore Maven wrapper jar file
+.mvn/wrapper/maven-wrapper.jar
+
+# Ignore Maven wrapper properties
+!.mvn/wrapper/maven-wrapper.properties

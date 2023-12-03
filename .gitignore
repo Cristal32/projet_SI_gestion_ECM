@@ -1,8 +1,6 @@
 # Maven target directory
 /target/
 
-src/main/resources/application.properties
-
 # Eclipse
 .classpath
 .project

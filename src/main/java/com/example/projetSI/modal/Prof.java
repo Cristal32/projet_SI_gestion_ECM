@@ -1,4 +1,4 @@
-package com.example.projetSI.model;
+package com.example.projetSI.modal;
 
 import java.io.Serializable;
 import java.sql.Date;

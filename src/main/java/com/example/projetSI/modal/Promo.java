@@ -34,12 +34,12 @@ public class Promo implements Serializable {
 	
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "dirigeant")
-	private Prof prof_dirigeant;
+	private Professeur prof_dirigeant;
 	
 	//constructeurs
 	public Promo() {}
 	
-	public Promo(int annee_promo, int nbr_inscrits, int nbr_recus, Prof prof_dirigeant)
+	public Promo(int annee_promo, int nbr_inscrits, int nbr_recus, Professeur prof_dirigeant)
 	{
 		this.annee_promo = annee_promo;
 		this.nbr_inscrits = nbr_inscrits;
@@ -60,7 +60,7 @@ public class Promo implements Serializable {
 		return nbr_recus;
 	}	
 	
-	public Prof getDirigeant() {
+	public Professeur getDirigeant() {
 		return prof_dirigeant;
 	}
 	
@@ -77,7 +77,7 @@ public class Promo implements Serializable {
 		this.nbr_recus = nbr_recus;
 	}
 	
-	public void setDirigeant(Prof prof_dirigeant) {
+	public void setDirigeant(Professeur prof_dirigeant) {
 		this.prof_dirigeant = prof_dirigeant;
 	}
 }

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Candidat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_candidat")
+    @Column(name = "id_candidat", unique = true, nullable = false)
     private int id_candidat;
 
     @Column(name = "email_candidat")

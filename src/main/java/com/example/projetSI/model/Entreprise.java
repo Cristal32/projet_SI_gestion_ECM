@@ -2,9 +2,11 @@ package com.example.projetSI.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "Entreprise")
-public class Entreprise {
+public class Entreprise implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "N_entreprise", unique = true, nullable = false)

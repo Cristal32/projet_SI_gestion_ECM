@@ -13,6 +13,14 @@ public class Utilisateur {
     @Column(name = "mot de passe")
     private String mot_de_passe;
 
+    @OneToOne
+    @JoinColumn(name = "n_etudiant")
+    private Etudiant etudiant;
+
+    @OneToOne
+    @JoinColumn(name = "n_admin")
+    private Administrateur admin;
+
     public Utilisateur() {
     }
 

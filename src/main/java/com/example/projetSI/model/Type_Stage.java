@@ -1,36 +1,44 @@
 package com.example.projetSI.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.io.Serializable;
 
 @Entity
-public class Type_Stage {
+@Table(name = "TypeStage")
+public class Type_Stage implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "N_type", unique = true, nullable = false)
-    private int N_type;
-    @Column(name = "duree")
-    private String duree;
+    @Column(name = "code", unique = true, nullable = false)
+    private String code;
+
+    @Column(name = "Nbr semaines")
+    private String nbr_semaines;
 
     public Type_Stage() {
     }
 
-    public Type_Stage(String duree) {
-        this.duree = duree;
+    public Type_Stage(String code, String nbr_semaines) {
+        this.code = code;
+        this.nbr_semaines = nbr_semaines;
     }
 
-    public int getN_type() {
-        return N_type;
+    public String getCode() {
+        return code;
     }
 
-    public void setN_type(int n_type) {
-        N_type = n_type;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getDuree() {
-        return duree;
+    public String getNbr_semaines() {
+        return nbr_semaines;
     }
 
-    public void setDuree(String duree) {
-        this.duree = duree;
+    public void setNbr_semaines(String nbr_semaines) {
+        this.nbr_semaines = nbr_semaines;
     }
 }

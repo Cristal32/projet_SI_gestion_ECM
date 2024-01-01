@@ -1,33 +1,39 @@
 package com.example.projetSI.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
 
 @Entity
-public class Competence {
+public class Competence implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "N_competence", unique = true, nullable = false)
-    private String N_competence;
+    @Column(name = "code", unique = true, nullable = false)
+    private String code;
+
     @Column(name = "libelle")
     private String libelle;
+
     @Column(name = "description")
     private String description;
 
     public Competence() {
     }
 
-    public Competence(String n_competence, String libelle, String description) {
-        this.N_competence = n_competence;
+    public Competence(String code, String libelle, String description) {
+        this.code = code;
         this.libelle = libelle;
         this.description = description;
     }
 
-    public String getN_competence() {
-        return N_competence;
+    public String getCode() {
+        return code;
     }
 
-    public void setN_competence(String n_competence) {
-        N_competence = n_competence;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getLibelle() {

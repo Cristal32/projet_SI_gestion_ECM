@@ -28,7 +28,8 @@ public class Type_stage implements Serializable {
 	public Type_stage() {
     }
 
-    public Type_stage(String nbr_semaines) {
+    public Type_stage(String code, String nbr_semaines) {
+    	this.code = code;
         this.nbr_semaines = nbr_semaines;
     }
     

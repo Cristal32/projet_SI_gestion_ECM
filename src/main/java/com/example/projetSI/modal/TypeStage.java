@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TypeStage")
-public class Type_stage implements Serializable {
+public class TypeStage implements Serializable {
 
 	/**
 	 * 
@@ -17,26 +17,26 @@ public class Type_stage implements Serializable {
 	private static final long serialVersionUID = 457588864077896139L;
 	
 	@Id
-    @Column(name = "code", unique = true, nullable = false)
-    private String code;
+    @Column(name = "id", unique = true, nullable = false)
+    private int id;
 	
 	@Column(name = "Nbr semaines")
     private String nbr_semaines;
 	
 	//constructeurs
 	
-	public Type_stage() {
+	public TypeStage() {
     }
 
-    public Type_stage(String code, String nbr_semaines) {
-    	this.code = code;
+    public TypeStage(int id, String nbr_semaines) {
+    	this.id = id;
         this.nbr_semaines = nbr_semaines;
     }
     
     //getters
     
-    public String getCode() {
-    	return this.code;
+    public int getId() {
+    	return this.id;
     }
     
     public String getNbrSemaines() {
@@ -45,8 +45,8 @@ public class Type_stage implements Serializable {
     
     //setters
     
-    public void setCode(String code) {
-    	this.code = code;
+    public void setId(int id) {
+    	this.id = id;
     }
     
     public void setNbrSemaines(String nbr_semaines) {

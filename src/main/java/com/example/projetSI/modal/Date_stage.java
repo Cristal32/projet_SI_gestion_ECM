@@ -28,7 +28,7 @@ public class Date_stage implements Serializable{
 	@ManyToOne
 	@MapsId("typeStageId")
     @JoinColumn(name = "type stage")
-    private Type_stage type_stage;
+    private TypeStage type_stage;
 	
 	@ManyToOne
 	@MapsId("anneeId")
@@ -47,7 +47,7 @@ public class Date_stage implements Serializable{
 		
 	}
 	
-	public Date_stage(Type_stage type_stage, Annee annee, Date debut, Date fin) {
+	public Date_stage(TypeStage type_stage, Annee annee, Date debut, Date fin) {
 		this.type_stage = type_stage;
 		this.annee = annee;
 		this.debut = debut;
@@ -56,7 +56,7 @@ public class Date_stage implements Serializable{
 	
 	//getters
 	
-	public Type_stage getTypeStage() {
+	public TypeStage getTypeStage() {
 		return this.type_stage;
 	}
 	
@@ -74,7 +74,7 @@ public class Date_stage implements Serializable{
 	
 	//setters
 	
-	public void setTypeStage(Type_stage type_stage) {
+	public void setTypeStage(TypeStage type_stage) {
 		this.type_stage = type_stage;
 	}
 	
@@ -99,25 +99,23 @@ public class Date_stage implements Serializable{
 		private static final long serialVersionUID = 1920211291036854792L;
 
 		@Column(name = "type_stage_id")
-	    private String typeStageId;
+	    private int typeStageId;
 
 	    @Column(name = "annee_id")
 	    private int anneeId;
 
 	    //constructeurs
 	    
-	    public DateStageId() {
-	    	
-	    }
+	    public DateStageId() {}
 	    
-	    public DateStageId(String typeStageId, int anneeId) {
+	    public DateStageId(int typeStageId, int anneeId) {
 	    	this.typeStageId = typeStageId;
 	    	this.anneeId = anneeId;
 	    }
 	    
 	    //getters
 	    
-	    public String getTypeStageId() {
+	    public int getTypeStageId() {
 	    	return this.typeStageId;
 	    }
 	    
@@ -127,7 +125,7 @@ public class Date_stage implements Serializable{
 	    
 	    //setters
 	    
-	    public void setTypeStageId(String typeStageId) {
+	    public void setTypeStageId(int typeStageId) {
 	    	this.typeStageId = typeStageId;
 	    }
 	    

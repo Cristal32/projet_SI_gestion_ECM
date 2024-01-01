@@ -6,44 +6,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.projetSI.modal.Etudiant;
-import com.example.projetSI.repository.EtudiantDao;
-import com.example.projetSI.service.EtudiantService;
-
+import com.example.projetSI.modal.TypeStage;
+import com.example.projetSI.repository.TypeStageDao;
+import com.example.projetSI.service.TypeStageService;
 
 @Service
-public class EtudiantServiceImpl implements EtudiantService{
+public class TypeStageServiceImpl implements TypeStageService {
 	
 	@Autowired
-	private EtudiantDao etudiantDao;
+	private TypeStageDao typeStageDao;
 	
 	// ---------------------------- get all etudiants ----------------------------
 	@Override
-	public List<Etudiant> getAllEtudiants(){
-		return etudiantDao.findAll();
+	public List<TypeStage> getAllTypesStage(){
+		return typeStageDao.findAll();
 	}
 		
 	// ---------------------------- get etudiant by their id ----------------------------
 	@Override
-	public Etudiant findEtudiantById(int id) {
-		return etudiantDao.findEtudiantById(id).orElse(null);
+	public TypeStage findTypeStageById(int id) {
+		return typeStageDao.findTypeStageById(id).orElse(null);
 	}
 	
 	// ---------------------------- add etudiant ----------------------------
 	@Override
-	public Etudiant addEtudiant(Etudiant etudiant) {
-		return etudiantDao.save(etudiant);
+	public TypeStage addTypeStage(TypeStage type_stage) {
+		return typeStageDao.save(type_stage);
 	}
 	
 	// ---------------------------- update etudiant ----------------------------
 	@Override
-	public Etudiant updateEtudiant(Etudiant etudiant) {
-		return etudiantDao.save(etudiant);
+	public TypeStage updateTypeStage(TypeStage type_stage) {
+		return typeStageDao.save(type_stage);
 	}
 	
 	// ---------------------------- delete stagiaire by id ----------------------------
 	@Override
-	public void deleteEtudiant(int id) {
-		etudiantDao.deleteById(id);
+	public void deleteTypeStage(int id) {
+		typeStageDao.deleteById(id);
 	}
 
 }

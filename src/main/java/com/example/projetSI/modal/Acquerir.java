@@ -26,7 +26,7 @@ public class Acquerir implements Serializable {
 	@ManyToOne
 	@MapsId("typeStageId")
     @JoinColumn(name = "type stage")
-    private Type_stage type_stage;
+    private TypeStage type_stage;
 	
 	@ManyToOne
 	@MapsId("competenceId")
@@ -42,7 +42,7 @@ public class Acquerir implements Serializable {
 		
 	}
 	
-	public Acquerir(Type_stage type_stage, Competence competence, int niv) {
+	public Acquerir(TypeStage type_stage, Competence competence, int niv) {
 		this.type_stage = type_stage;
 		this.competence = competence;
 		this.niveau = niv;
@@ -50,7 +50,7 @@ public class Acquerir implements Serializable {
 	
 	//getters
 	
-	public Type_stage getTypeStage() {
+	public TypeStage getTypeStage() {
 		return this.type_stage;
 	}
 	
@@ -64,7 +64,7 @@ public class Acquerir implements Serializable {
 	
 	//setters
 	
-	public void setTypeStage(Type_stage type_stage) {
+	public void setTypeStage(TypeStage type_stage) {
 		this.type_stage = type_stage;
 	}
 	
@@ -85,25 +85,23 @@ public class Acquerir implements Serializable {
 		private static final long serialVersionUID = 1920211291036854792L;
 
 		@Column(name = "type_stage_id")
-	    private String typeStageId;
+	    private int typeStageId;
 
 	    @Column(name = "competence_id")
 	    private String competenceId;
 
 	    //constructeurs
 	    
-	    public AcquerirId() {
-	    	
-	    }
+	    public AcquerirId() {}
 	    
-	    public AcquerirId(String typeStageId, String competenceId) {
+	    public AcquerirId(int typeStageId, String competenceId) {
 	    	this.typeStageId = typeStageId;
 	    	this.competenceId = competenceId;
 	    }
 	    
 	    //getters
 	    
-	    public String getTypeStageId() {
+	    public int getTypeStageId() {
 	    	return this.typeStageId;
 	    }
 	    
@@ -113,7 +111,7 @@ public class Acquerir implements Serializable {
 	    
 	    //setters
 	    
-	    public void setTypeStageId(String typeStageId) {
+	    public void setTypeStageId(int typeStageId) {
 	    	this.typeStageId = typeStageId;
 	    }
 	    

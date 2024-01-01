@@ -44,7 +44,7 @@ public class Stage implements Serializable {
 	
 	@ManyToOne
     @JoinColumn(name = "type_stage", nullable = false)
-    private Type_stage type_stage;
+    private TypeStage type_stage;
 	
 	@ManyToOne
     @JoinColumn(name = "tuteur_id", nullable = true)
@@ -54,7 +54,7 @@ public class Stage implements Serializable {
 	
 	public Stage() {}
 	
-	public Stage(int annee, String compte_rendu, Etudiant etudiant, Entreprise entreprise, Professeur prof, Type_stage type_stage, Tuteur tuteur) {
+	public Stage(int annee, String compte_rendu, Etudiant etudiant, Entreprise entreprise, Professeur prof, TypeStage type_stage, Tuteur tuteur) {
 		this.annee = annee;
 		this.compte_rendu = compte_rendu;
 		this.etudiant = etudiant;
@@ -86,7 +86,7 @@ public class Stage implements Serializable {
 		return this.prof;
 	}
 	
-	public Type_stage getTypeStage() {
+	public TypeStage getTypeStage() {
 		return this.type_stage;
 	}
 	
@@ -116,7 +116,7 @@ public class Stage implements Serializable {
 		this.prof = prof;
 	}
 	
-	public void setTypeStage(Type_stage type_stage) {
+	public void setTypeStage(TypeStage type_stage) {
 		this.type_stage = type_stage;
 	}
 	

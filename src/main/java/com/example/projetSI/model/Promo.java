@@ -17,9 +17,8 @@ import jakarta.persistence.Table;
 public class Promo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_promo", unique = true, nullable = false)
-    private int annee_promo;
+    @Column(name = "annee", unique = true, nullable = false)
+    private int annee;
 
     @Column(name = "nbr_inscrits")
     private int nbr_inscrits;
@@ -34,9 +33,9 @@ public class Promo implements Serializable {
     //constructeurs
     public Promo() {}
 
-    public Promo(int annee_promo, int nbr_inscrits, int nbr_recus, Prof prof_dirigeant)
+    public Promo(int annee, int nbr_inscrits, int nbr_recus, Prof prof_dirigeant)
     {
-        this.annee_promo = annee_promo;
+        this.annee = annee;
         this.nbr_inscrits = nbr_inscrits;
         this.nbr_recus = nbr_recus;
         this.prof_dirigeant = prof_dirigeant;
@@ -44,7 +43,7 @@ public class Promo implements Serializable {
 
     //getters
     public int getAnnee() {
-        return annee_promo;
+        return annee;
     }
 
     public int getNbrInscrits() {
@@ -60,8 +59,8 @@ public class Promo implements Serializable {
     }
 
     //setters
-    public void setAnnee(int annee_promo) {
-        this.annee_promo = annee_promo;
+    public void setAnnee(int annee) {
+        this.annee = annee;
     }
 
     public void setNbrInscrits(int nbr_inscrits) {

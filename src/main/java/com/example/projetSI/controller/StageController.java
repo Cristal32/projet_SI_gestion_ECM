@@ -15,59 +15,57 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.projetSI.modal.Etudiant;
-import com.example.projetSI.service.EtudiantService;
+import com.example.projetSI.modal.Stage;
+import com.example.projetSI.service.StageService;
 
 import jakarta.transaction.Transactional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
-@RequestMapping("/api/etudiant")
-public class EtudiantController {
-	
+@RequestMapping("/api/stage")
+public class StageController {
 	@Autowired
-	private final EtudiantService etudiantService;
+	private final StageService stageService;
 	
 	//constructeur
-	public EtudiantController(EtudiantService etudiantService) {
-		this.etudiantService = etudiantService;
+	public StageController(StageService stageService) {
+		this.stageService = stageService;
 	}
 	
 	// ================================= GET Mapping =================================
 	
 	@GetMapping("/getAll")
-	public ResponseEntity<List<Etudiant>> getAllEtudiants(){
-		List<Etudiant> etudiants = etudiantService.getAllEtudiants();
+	public ResponseEntity<List<Stage>> getAllStages(){
+		List<Stage> etudiants = stageService.getAllStages();
 		return new ResponseEntity<>(etudiants, HttpStatus.OK);
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Etudiant> getAccessById(@PathVariable("id") int id){
-		Etudiant etudiant = etudiantService.findEtudiantById(id);
-		return new ResponseEntity<>(etudiant, HttpStatus.OK);
+	public ResponseEntity<Stage> getStageById(@PathVariable("id") int id){
+		Stage stage = stageService.findStageById(id);
+		return new ResponseEntity<>(stage, HttpStatus.OK);
 	}
 	// ================================= POST Mapping =================================
 	
 	@PostMapping("/add")
-	public ResponseEntity<Etudiant> addEtudiant(@RequestBody Etudiant etudiant){
-		Etudiant newEtudiant = etudiantService.addEtudiant(etudiant);
-		return new ResponseEntity<>(newEtudiant, HttpStatus.CREATED); 
+	public ResponseEntity<Stage> addStage(@RequestBody Stage stage){
+		Stage newStage = stageService.addStage(stage);
+		return new ResponseEntity<>(newStage, HttpStatus.CREATED); 
 	}
 	
 	// ================================= PUT Mapping =================================
 	
 	@PutMapping("/update")
-	public ResponseEntity<Etudiant> updateStage(@RequestBody Etudiant etudiant){
-		Etudiant updatedEtudiant = etudiantService.updateEtudiant(etudiant);
-		return new ResponseEntity<>(updatedEtudiant, HttpStatus.OK); 
+	public ResponseEntity<Stage> updateStage(@RequestBody Stage stage){
+		Stage updatedStage = stageService.updateStage(stage);
+		return new ResponseEntity<>(updatedStage, HttpStatus.OK); 
 	}
 	
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteEtudiant(@PathVariable("id") int id){
-		etudiantService.deleteEtudiant(id);
+		stageService.deleteStage(id);
 		return new ResponseEntity<>(HttpStatus.OK); 
 	}
-
 }

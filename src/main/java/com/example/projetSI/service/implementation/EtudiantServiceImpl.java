@@ -40,7 +40,7 @@ public class EtudiantServiceImpl implements EtudiantService{
 		return etudiantDao.save(etudiant);
 	}
 	
-	// ---------------------------- delete stagiaire by id ----------------------------
+	// ---------------------------- delete etudiant by id ----------------------------
 	@Override
 	public void deleteEtudiant(int id) {
 		etudiantDao.deleteById(id);

@@ -15,59 +15,58 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.projetSI.modal.Etudiant;
-import com.example.projetSI.service.EtudiantService;
+import com.example.projetSI.modal.Professeur;
+import com.example.projetSI.service.ProfService;
 
 import jakarta.transaction.Transactional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
-@RequestMapping("/api/etudiant")
-public class EtudiantController {
+@RequestMapping("/api/prof")
+public class ProfController {
 	
 	@Autowired
-	private final EtudiantService etudiantService;
+	private final ProfService profService;
 	
 	//constructeur
-	public EtudiantController(EtudiantService etudiantService) {
-		this.etudiantService = etudiantService;
+	public ProfController(ProfService profService) {
+		this.profService = profService;
 	}
 	
 	// ================================= GET Mapping =================================
 	
 	@GetMapping("/getAll")
-	public ResponseEntity<List<Etudiant>> getAllEtudiants(){
-		List<Etudiant> etudiants = etudiantService.getAllEtudiants();
-		return new ResponseEntity<>(etudiants, HttpStatus.OK);
+	public ResponseEntity<List<Professeur>> getAllProfs(){
+		List<Professeur> profs = profService.getAllProfs();
+		return new ResponseEntity<>(profs, HttpStatus.OK);
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Etudiant> getAccessById(@PathVariable("id") int id){
-		Etudiant etudiant = etudiantService.findEtudiantById(id);
-		return new ResponseEntity<>(etudiant, HttpStatus.OK);
+	public ResponseEntity<Professeur> getProfById(@PathVariable("id") int id){
+		Professeur prof = profService.findProfById(id);
+		return new ResponseEntity<>(prof, HttpStatus.OK);
 	}
 	// ================================= POST Mapping =================================
 	
 	@PostMapping("/add")
-	public ResponseEntity<Etudiant> addEtudiant(@RequestBody Etudiant etudiant){
-		Etudiant newEtudiant = etudiantService.addEtudiant(etudiant);
-		return new ResponseEntity<>(newEtudiant, HttpStatus.CREATED); 
+	public ResponseEntity<Professeur> addProf(@RequestBody Professeur prof){
+		Professeur new_prof = profService.addProf(prof);
+		return new ResponseEntity<>(new_prof, HttpStatus.CREATED); 
 	}
 	
 	// ================================= PUT Mapping =================================
 	
 	@PutMapping("/update")
-	public ResponseEntity<Etudiant> updateStage(@RequestBody Etudiant etudiant){
-		Etudiant updatedEtudiant = etudiantService.updateEtudiant(etudiant);
-		return new ResponseEntity<>(updatedEtudiant, HttpStatus.OK); 
+	public ResponseEntity<Professeur> updateProf(@RequestBody Professeur prof){
+		Professeur updated_prof = profService.updateProf(prof);
+		return new ResponseEntity<>(updated_prof, HttpStatus.OK); 
 	}
 	
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteEtudiant(@PathVariable("id") int id){
-		etudiantService.deleteEtudiant(id);
+	public ResponseEntity<?> deleteProf(@PathVariable("id") int id){
+		profService.deleteProf(id);
 		return new ResponseEntity<>(HttpStatus.OK); 
 	}
-
 }

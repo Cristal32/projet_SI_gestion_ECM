@@ -15,59 +15,58 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.projetSI.modal.Etudiant;
-import com.example.projetSI.service.EtudiantService;
+import com.example.projetSI.modal.Entreprise;
+import com.example.projetSI.service.EntrepriseService;
 
 import jakarta.transaction.Transactional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
-@RequestMapping("/api/etudiant")
-public class EtudiantController {
+@RequestMapping("/api/entreprise")
+public class EntrepriseController {
 	
 	@Autowired
-	private final EtudiantService etudiantService;
+	private final EntrepriseService entrepriseService;
 	
 	//constructeur
-	public EtudiantController(EtudiantService etudiantService) {
-		this.etudiantService = etudiantService;
+	public EntrepriseController(EntrepriseService entrepriseService) {
+		this.entrepriseService = entrepriseService;
 	}
 	
 	// ================================= GET Mapping =================================
 	
 	@GetMapping("/getAll")
-	public ResponseEntity<List<Etudiant>> getAllEtudiants(){
-		List<Etudiant> etudiants = etudiantService.getAllEtudiants();
-		return new ResponseEntity<>(etudiants, HttpStatus.OK);
+	public ResponseEntity<List<Entreprise>> getAllEntreprises(){
+		List<Entreprise> entreprises = entrepriseService.getAllEntreprises();
+		return new ResponseEntity<>(entreprises, HttpStatus.OK);
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Etudiant> getAccessById(@PathVariable("id") int id){
-		Etudiant etudiant = etudiantService.findEtudiantById(id);
-		return new ResponseEntity<>(etudiant, HttpStatus.OK);
+	public ResponseEntity<Entreprise> getEntrepriseById(@PathVariable("id") int id){
+		Entreprise entreprise = entrepriseService.findEntrepriseById(id);
+		return new ResponseEntity<>(entreprise, HttpStatus.OK);
 	}
 	// ================================= POST Mapping =================================
 	
 	@PostMapping("/add")
-	public ResponseEntity<Etudiant> addEtudiant(@RequestBody Etudiant etudiant){
-		Etudiant newEtudiant = etudiantService.addEtudiant(etudiant);
-		return new ResponseEntity<>(newEtudiant, HttpStatus.CREATED); 
+	public ResponseEntity<Entreprise> addEntreprise(@RequestBody Entreprise entreprise){
+		Entreprise new_entreprise = entrepriseService.addEntreprise(entreprise);
+		return new ResponseEntity<>(new_entreprise, HttpStatus.CREATED); 
 	}
 	
 	// ================================= PUT Mapping =================================
 	
 	@PutMapping("/update")
-	public ResponseEntity<Etudiant> updateStage(@RequestBody Etudiant etudiant){
-		Etudiant updatedEtudiant = etudiantService.updateEtudiant(etudiant);
-		return new ResponseEntity<>(updatedEtudiant, HttpStatus.OK); 
+	public ResponseEntity<Entreprise> updateEntreprise(@RequestBody Entreprise entreprise){
+		Entreprise updated_entreprise = entrepriseService.updateEntreprise(entreprise);
+		return new ResponseEntity<>(updated_entreprise, HttpStatus.OK); 
 	}
 	
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteEtudiant(@PathVariable("id") int id){
-		etudiantService.deleteEtudiant(id);
+	public ResponseEntity<?> deleteEntreprise(@PathVariable("id") int id){
+		entrepriseService.deleteEntreprise(id);
 		return new ResponseEntity<>(HttpStatus.OK); 
 	}
-
 }

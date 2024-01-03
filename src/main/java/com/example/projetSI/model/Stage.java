@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 public class Stage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "N_stage", unique = true, nullable = false)
-    private int N_stage;
+    @Column(name = "id_stage", unique = true, nullable = false)
+    private int id_stage;
 
     @Column(name = "annee stage")
     private int annee_stage;
@@ -17,7 +17,7 @@ public class Stage {
     private String compte_rendu;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "n_etudiant")
+    @JoinColumn(name = "id_etudiant")
     private Etudiant etudiant;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
@@ -25,7 +25,7 @@ public class Stage {
     private Entreprise entreprise;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = "n_prof")
+    @JoinColumn(name = "id_prof")
     private Prof prof;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -33,7 +33,7 @@ public class Stage {
     private Type_Stage type;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = "n_tuteur")
+    @JoinColumn(name = "id_tuteur")
     private Tuteur tuteur;
 
     @Column(name = "statut_stage")
@@ -53,12 +53,12 @@ public class Stage {
         this.statut_stage = statut_stage;
     }
 
-    public int getN_stage() {
-        return N_stage;
+    public int getId_stage() {
+        return id_stage;
     }
 
-    public void setN_stage(int n_stage) {
-        N_stage = n_stage;
+    public void setId_stage(int n_stage) {
+        id_stage = id_stage;
     }
 
     public int getAnnee_stage() {

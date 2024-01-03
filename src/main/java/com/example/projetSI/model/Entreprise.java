@@ -1,12 +1,15 @@
 package com.example.projetSI.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "Entreprise")
 public class Entreprise implements Serializable {
+
     @Id
     @Column(name = "siret", unique = true, nullable = false)
     private String siret;

@@ -21,7 +21,7 @@ public class Stage {
     private Etudiant etudiant;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = "n_entreprise")
+    @JoinColumn(name = "siret")
     private Entreprise entreprise;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY)

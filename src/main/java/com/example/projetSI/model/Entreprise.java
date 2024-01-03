@@ -8,9 +8,8 @@ import java.io.Serializable;
 @Table(name = "Entreprise")
 public class Entreprise implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "N_entreprise", unique = true, nullable = false)
-    private int N_entreprise;
+    @Column(name = "siret", unique = true, nullable = false)
+    private String siret;
 
     @Column(name = "raison social")
     private String raison_social;
@@ -33,7 +32,8 @@ public class Entreprise implements Serializable {
     public Entreprise() {
     }
 
-    public Entreprise(String raison_social, String forme_juridique, String adrs_entreprise, String tel_standard, String contact, String tel_contact) {
+    public Entreprise(String siret, String raison_social, String forme_juridique, String adrs_entreprise, String tel_standard, String contact, String tel_contact) {
+        this.siret = siret;
         this.raison_social = raison_social;
         this.forme_juridique = forme_juridique;
         this.adrs_entreprise = adrs_entreprise;
@@ -42,8 +42,8 @@ public class Entreprise implements Serializable {
         this.tel_contact = tel_contact;
     }
 
-    public int getN_entreprise() {
-        return N_entreprise;
+    public String getSiret() {
+        return siret;
     }
 
     public String getRaison_social() {
@@ -70,8 +70,8 @@ public class Entreprise implements Serializable {
         return tel_contact;
     }
 
-    public void setN_entreprise(int n_entreprise) {
-        N_entreprise = n_entreprise;
+    public void setSiret(String siret) {
+        this.siret = siret;
     }
 
     public void setRaison_social(String raison_social) {

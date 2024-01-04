@@ -1,7 +1,9 @@
 package com.example.projetSI.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "stage")
 public class Stage {
@@ -53,19 +55,19 @@ public class Stage {
         this.statut_stage = statut_stage;
     }
 
-    public int getId_stage() {
+    public int getId() {
         return id_stage;
     }
 
-    public void setId_stage(int n_stage) {
-        id_stage = id_stage;
+    public void setId(int id_stage) {
+        this.id_stage = id_stage;
     }
 
-    public int getAnnee_stage() {
+    public int getAnnee() {
         return annee_stage;
     }
 
-    public void setAnnee_stage(int annee_stage) {
+    public void setAnnee(int annee_stage) {
         this.annee_stage = annee_stage;
     }
 
@@ -117,11 +119,11 @@ public class Stage {
         this.tuteur = tuteur;
     }
 
-    public String getStatut_stage() {
+    public String getStatut() {
         return statut_stage;
     }
 
-    public void setStatut_stage(String statut_stage) {
+    public void setStatut(String statut_stage) {
         this.statut_stage = statut_stage;
     }
 }

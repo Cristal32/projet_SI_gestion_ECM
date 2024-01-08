@@ -21,7 +21,7 @@ import com.example.projetSI.service.StageService;
 import jakarta.transaction.Transactional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/api/stage")
 public class StageController {
 	@Autowired
@@ -64,7 +64,7 @@ public class StageController {
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteEtudiant(@PathVariable("id") int id){
+	public ResponseEntity<?> deleteStage(@PathVariable("id") int id){
 		stageService.deleteStage(id);
 		return new ResponseEntity<>(HttpStatus.OK); 
 	}

@@ -2,6 +2,8 @@ package com.example.projetSI.modal;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "promo")
 public class Promo implements Serializable {
@@ -23,8 +26,8 @@ public class Promo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_promo", unique = true, nullable = false)
-	private int annee_promo;
+	@Column(name = "id", unique = true, nullable = false)
+	private int id;
 	
 	@Column(name = "nbr_inscrits")
 	private int nbr_inscrits;
@@ -39,17 +42,17 @@ public class Promo implements Serializable {
 	//constructeurs
 	public Promo() {}
 	
-	public Promo(int annee_promo, int nbr_inscrits, int nbr_recus, Professeur prof_dirigeant)
+	public Promo(int id, int nbr_inscrits, int nbr_recus, Professeur prof_dirigeant)
 	{
-		this.annee_promo = annee_promo;
+		this.id = id;
 		this.nbr_inscrits = nbr_inscrits;
 		this.nbr_recus = nbr_recus;
 		this.prof_dirigeant = prof_dirigeant;
 	}
 	
 	//getters
-	public int getAnnee() {
-		return annee_promo;
+	public int getId() {
+		return id;
 	}
 	
 	public int getNbrInscrits() {
@@ -65,8 +68,8 @@ public class Promo implements Serializable {
 	}
 	
 	//setters
-	public void setAnnee(int annee_promo) {
-		this.annee_promo = annee_promo;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public void setNbrInscrits(int nbr_inscrits) {

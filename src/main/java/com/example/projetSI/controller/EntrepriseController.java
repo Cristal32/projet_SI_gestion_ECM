@@ -21,7 +21,7 @@ import com.example.projetSI.service.EntrepriseService;
 import jakarta.transaction.Transactional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/api/entreprise")
 public class EntrepriseController {
 	

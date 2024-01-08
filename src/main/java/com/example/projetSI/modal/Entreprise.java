@@ -2,6 +2,8 @@ package com.example.projetSI.modal;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "Entreprise")
 public class Entreprise implements Serializable {
@@ -68,7 +71,7 @@ public class Entreprise implements Serializable {
         return adrs;
     }
 
-    public String getTel_standard() {
+    public String getTelStandard() {
         return tel_standard;
     }
 
@@ -76,7 +79,7 @@ public class Entreprise implements Serializable {
         return contact;
     }
 
-    public String getTel_contact() {
+    public String getTelContact() {
         return tel_contact;
     }
 
@@ -98,7 +101,7 @@ public class Entreprise implements Serializable {
         this.adrs = adrs_entreprise;
     }
 
-    public void setTel_standard(String tel_standard) {
+    public void setTelStandard(String tel_standard) {
         this.tel_standard = tel_standard;
     }
 
@@ -106,7 +109,7 @@ public class Entreprise implements Serializable {
         this.contact = contact;
     }
 
-    public void setTel_contact(String tel_contact) {
+    public void setTelContact(String tel_contact) {
         this.tel_contact = tel_contact;
     }
 }

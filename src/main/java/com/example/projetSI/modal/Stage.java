@@ -66,6 +66,10 @@ public class Stage implements Serializable {
 	
 	//getters
 	
+	public int getId() {
+		return this.id;
+	}
+	
 	public int getAnnee() {
 		return this.annee;
 	}
@@ -95,6 +99,10 @@ public class Stage implements Serializable {
 	}
 	
 	//setters
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public void setAnnee(int annee) {
 		this.annee = annee;

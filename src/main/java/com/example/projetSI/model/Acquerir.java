@@ -12,12 +12,12 @@ public class Acquerir {
 
     @ManyToOne
     @MapsId("typeStageId")
-    @JoinColumn(name = "type stage")
+    @JoinColumn(name = "type_stage")
     private Type_Stage type_stage;
 
     @ManyToOne
     @MapsId("competenceId")
-    @JoinColumn(name = "code competence")
+    @JoinColumn(name = "competence")
     private Competence competence;
 
     @Column(name = "niveau exige")
@@ -57,7 +57,7 @@ public class Acquerir {
     }
 
     @Embeddable
-    public class AcquerirId implements Serializable {
+    public static class AcquerirId implements Serializable {
         @Column(name = "type_stage_id")
         private String typeStageId;
 

@@ -2,50 +2,58 @@ package com.example.projetSI.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 public class Candidat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_candidat", unique = true, nullable = false)
-    private int id_candidat;
 
-    @Column(name = "email_candidat")
-    private String email_candidat;
+    @Id
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
+
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "prenom")
+    private String prenom;
+
+    @Column(name = "date_naissance")
+    private Date date_naiss;
+
+    @Column(name = "sexe")
+    private String sexe;
 
     @Column(name = "statut")
     private String statut;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "dossier")
+    private FileData dossier;
+
     @Column(name = "dossier_complete")
     private String dossier_complete;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "promo_candidat")
     private Promo promo_candidat;
 
     public Candidat() {
     }
 
-    public Candidat(String email_candidat, String statut, String dossier_complete, Promo promo_candidat) {
-        this.email_candidat = email_candidat;
+    public Candidat(FileData dossier, String email_candidat, String statut, String dossier_complete, Promo promo_candidat) {
+        this.dossier = dossier;
+        this.email= email_candidat;
         this.statut = statut;
         this.dossier_complete = dossier_complete;
         this.promo_candidat = promo_candidat;
     }
 
-    public int getId_candidat() {
-        return id_candidat;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId_candidat(int id_candidat) {
-        this.id_candidat = id_candidat;
-    }
-
-    public String getEmail_candidat() {
-        return email_candidat;
-    }
-
-    public void setEmail_candidat(String email_candidat) {
-        this.email_candidat = email_candidat;
+    public void setEmail(String email_candidat) {
+        this.email = email_candidat;
     }
 
     public String getStatut() {
@@ -64,11 +72,51 @@ public class Candidat {
         this.dossier_complete = dossier_complete;
     }
 
-    public Promo getPromo_candidat() {
+    public FileData getDossier() {
+        return dossier;
+    }
+
+    public void setDossier(FileData dossier) {
+        this.dossier = dossier;
+    }
+
+    public Promo getPromo() {
         return promo_candidat;
     }
 
-    public void setPromo_candidat(Promo promo_candidat) {
+    public void setPromo(Promo promo_candidat) {
         this.promo_candidat = promo_candidat;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public Date getDateNaissance() {
+        return date_naiss;
+    }
+
+    public void setDateNaissance(Date date_naiss) {
+        this.date_naiss = date_naiss;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
     }
 }

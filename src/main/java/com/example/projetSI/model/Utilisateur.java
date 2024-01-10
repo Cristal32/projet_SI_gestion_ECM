@@ -1,55 +1,109 @@
 package com.example.projetSI.model;
 
-import jakarta.persistence.*;
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
-public class Utilisateur {
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@Table(name = "utilisateur")
+public class Utilisateur implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_utilisateur", unique = true, nullable = false)
-    private int id_utilisateur;
-    @Column(name = "login")
-    private String login;
-    @Column(name = "mot de passe")
-    private String mot_de_passe;
+    @Column(name = "utilisateur_id", unique = true, nullable = false)
+    private int id;
 
-    @OneToOne
-    @JoinColumn(name = "n_etudiant")
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    @OneToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "etudiant")
     private Etudiant etudiant;
 
-    @OneToOne
-    @JoinColumn(name = "n_admin")
-    private Administrateur admin;
+    @OneToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "candidat")
+    private Candidat candidat;
 
-    public Utilisateur() {
+    //constructors
+    public Utilisateur() {}
+
+    public Utilisateur(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
-    public Utilisateur(String login, String mot_de_passe) {
-        this.login = login;
-        this.mot_de_passe = mot_de_passe;
+    //getters
+    public int getId() {
+        return id;
+    }
+    public String getPassword() {
+        return password;
     }
 
-    public int getId_utilisateur() {
-        return id_utilisateur;
+    public String getUsername() {
+        return username;
+    }
+    public Role getRole(){
+        return role;
     }
 
-    public void setId_utilisateur(int id_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
+    //setters
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public String getLogin() {
-        return login;
+    //methods
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "id = " + id +
+                ", username = " + username +
+                ", pwd = " + password +
+                "}";
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public Etudiant getEtudiant() {
+        return etudiant;
     }
 
-    public String getMot_de_passe() {
-        return mot_de_passe;
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
 
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
     }
 }

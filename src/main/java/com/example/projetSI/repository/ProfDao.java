@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.projetSI.modal.Professeur;
 
 @Repository
-public interface ProfDao extends JpaRepository<Professeur, Integer> {
-	Optional<Professeur> findProfById(int id);
+public interface ProfDao extends JpaRepository<Professeur, String> {
+	Optional<Professeur> findProfById(String id);
+	void deleteProfById(String id);
 }

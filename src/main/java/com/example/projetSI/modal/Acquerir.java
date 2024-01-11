@@ -50,6 +50,10 @@ public class Acquerir implements Serializable {
 	
 	//getters
 	
+	public AcquerirId getId() {
+		return this.id;
+	}
+	
 	public TypeStage getTypeStage() {
 		return this.type_stage;
 	}
@@ -64,6 +68,10 @@ public class Acquerir implements Serializable {
 	
 	//setters
 	
+	public void setId(AcquerirId id) {
+		this.id = id;
+	}
+	
 	public void setTypeStage(TypeStage type_stage) {
 		this.type_stage = type_stage;
 	}
@@ -77,7 +85,7 @@ public class Acquerir implements Serializable {
 	}
 	
 	@Embeddable
-	public class AcquerirId implements Serializable {
+	public static class AcquerirId implements Serializable {
 
 	    /**
 		 * 

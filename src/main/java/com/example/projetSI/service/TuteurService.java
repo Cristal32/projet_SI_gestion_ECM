@@ -7,9 +7,9 @@ import com.example.projetSI.modal.Tuteur;
 public interface TuteurService {
 	
 	public List<Tuteur> getAllTuteurs();
-	public Tuteur findTuteurById(int id);
+	public Tuteur findTuteurById(String id);
 	public Tuteur addTuteur(Tuteur tuteur);
 	public Tuteur updateTuteur(Tuteur tuteur);
-	public void deleteTuteur(int id);
+	public void deleteTuteur(String id);
 
 }

@@ -42,7 +42,7 @@ public class TuteurController {
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Tuteur> getTuteurById(@PathVariable("id") int id){
+	public ResponseEntity<Tuteur> getTuteurById(@PathVariable("id") String id){
 		Tuteur tuteur = tuteurService.findTuteurById(id);
 		return new ResponseEntity<>(tuteur, HttpStatus.OK);
 	}
@@ -65,7 +65,7 @@ public class TuteurController {
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteTuteur(@PathVariable("id") int id){
+	public ResponseEntity<?> deleteTuteur(@PathVariable("id") String id){
 		tuteurService.deleteTuteur(id);
 		return new ResponseEntity<>(HttpStatus.OK); 
 	}

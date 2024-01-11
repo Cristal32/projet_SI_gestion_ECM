@@ -23,7 +23,7 @@ public class ProfServiceImpl implements ProfService{
 		
 	// ---------------------------- get prof by their id ----------------------------
 	@Override
-	public Professeur findProfById(int id) {
+	public Professeur findProfById(String id) {
 		return profDao.findProfById(id).orElse(null);
 	}
 	
@@ -41,7 +41,7 @@ public class ProfServiceImpl implements ProfService{
 	
 	// ---------------------------- delete prof by id ----------------------------
 	@Override
-	public void deleteProf(int id) {
-		profDao.deleteById(id);
+	public void deleteProf(String id) {
+		profDao.deleteProfById(id);
 	}
 }

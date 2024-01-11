@@ -6,8 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -21,9 +19,8 @@ public class Entreprise implements Serializable {
 	private static final long serialVersionUID = 8741109641815185358L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_entreprise", unique = true, nullable = false)
-    private int id;
+    private String id;
 
     @Column(name = "raison sociale")
     private String raison_soc;
@@ -46,8 +43,9 @@ public class Entreprise implements Serializable {
     public Entreprise() {
     }
 
-    public Entreprise(String raison_social, String forme_juridique, String adrs_entreprise, String tel_standard, String contact, String tel_contact) {
-        this.raison_soc = raison_social;
+    public Entreprise(String id, String raison_social, String forme_juridique, String adrs_entreprise, String tel_standard, String contact, String tel_contact) {
+        this.id = id;
+    	this.raison_soc = raison_social;
         this.forme_jur = forme_juridique;
         this.adrs = adrs_entreprise;
         this.tel_standard = tel_standard;
@@ -55,7 +53,7 @@ public class Entreprise implements Serializable {
         this.tel_contact = tel_contact;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -85,8 +83,8 @@ public class Entreprise implements Serializable {
 
     //setters
     
-    public void setId(int n_entreprise) {
-        id = n_entreprise;
+    public void setId(String siret) {
+        this.id = siret;
     }
 
     public void setRaisonSoc(String raison_social) {

@@ -42,7 +42,7 @@ public class ProfController {
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Professeur> getProfById(@PathVariable("id") int id){
+	public ResponseEntity<Professeur> getProfById(@PathVariable("id") String id){
 		Professeur prof = profService.findProfById(id);
 		return new ResponseEntity<>(prof, HttpStatus.OK);
 	}
@@ -65,7 +65,7 @@ public class ProfController {
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteProf(@PathVariable("id") int id){
+	public ResponseEntity<?> deleteProf(@PathVariable("id") String id){
 		profService.deleteProf(id);
 		return new ResponseEntity<>(HttpStatus.OK); 
 	}

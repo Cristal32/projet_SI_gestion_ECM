@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -23,9 +21,9 @@ public class Professeur implements Serializable {
 	private static final long serialVersionUID = -8344420100946266161L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_prof", unique = true, nullable = false)
-    private int id;
+    private String id;
 	
 	@Column(name = "nom")
     private String nom;
@@ -49,7 +47,8 @@ public class Professeur implements Serializable {
 	
 	public Professeur() {}
 	
-	public Professeur(String nom, String prenom, String adrs, Date date_emb, String tel, Date date_dep) {
+	public Professeur(String id, String nom, String prenom, String adrs, Date date_emb, String tel, Date date_dep) {
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adrs = adrs;
@@ -60,7 +59,7 @@ public class Professeur implements Serializable {
 	
 	//getters
 	
-	public int getId() {
+	public String getId() {
         return id;
     }
     
@@ -90,16 +89,16 @@ public class Professeur implements Serializable {
     
     //setters
 
-    public void setId(int id_tuteur) {
-        this.id = id_tuteur;
+    public void setId(String id_prof) {
+        this.id = id_prof;
     }
 
-    public void setNom(String nom_tuteur) {
-        this.nom = nom_tuteur;
+    public void setNom(String nom_prof) {
+        this.nom = nom_prof;
     }
 
-    public void setPrenom(String prenom_tuteur) {
-        this.prenom = prenom_tuteur;
+    public void setPrenom(String prenom_prof) {
+        this.prenom = prenom_prof;
     }
 
     public void setAdrs(String adrs) {
@@ -110,8 +109,8 @@ public class Professeur implements Serializable {
         this.date_emb = date_emb;
     }
 
-    public void setTel(String tel_tuteur) {
-        this.tel = tel_tuteur;
+    public void setTel(String tel_prof) {
+        this.tel = tel_prof;
     }
     
     public void setDateDepart(Date date_dep) {

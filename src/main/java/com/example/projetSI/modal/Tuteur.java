@@ -6,8 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -22,9 +20,8 @@ public class Tuteur implements Serializable {
 	private static final long serialVersionUID = -7188867176954478198L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private int id;
+    private String id;
 	
     @Column(name = "nom")
     private String nom;
@@ -40,15 +37,16 @@ public class Tuteur implements Serializable {
     public Tuteur() {
     }
 
-    public Tuteur(String nom_tuteur, String prenom_tuteur, String tel_tuteur) {
-        this.nom = nom_tuteur;
+    public Tuteur(String id, String nom_tuteur, String prenom_tuteur, String tel_tuteur) {
+        this.id = id;
+    	this.nom = nom_tuteur;
         this.prenom = prenom_tuteur;
         this.tel = tel_tuteur;
     }
     
     //getters
 
-    public int getId() {
+    public String getId() {
         return id;
     }
     
@@ -66,7 +64,7 @@ public class Tuteur implements Serializable {
     
     //setters
 
-    public void setId(int id_tuteur) {
+    public void setId(String id_tuteur) {
         this.id = id_tuteur;
     }
 

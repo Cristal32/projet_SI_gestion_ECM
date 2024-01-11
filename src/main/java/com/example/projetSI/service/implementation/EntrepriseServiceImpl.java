@@ -23,7 +23,7 @@ public class EntrepriseServiceImpl implements EntrepriseService {
 		
 	// ---------------------------- get entreprise by their id ----------------------------
 	@Override
-	public Entreprise findEntrepriseById(int id) {
+	public Entreprise findEntrepriseById(String id) {
 		return entrepriseDao.findEntrepriseById(id).orElse(null);
 	}
 	
@@ -41,7 +41,7 @@ public class EntrepriseServiceImpl implements EntrepriseService {
 	
 	// ---------------------------- delete entreprise by id ----------------------------
 	@Override
-	public void deleteEntreprise(int id) {
+	public void deleteEntreprise(String id) {
 		entrepriseDao.deleteById(id);
 	}
 }

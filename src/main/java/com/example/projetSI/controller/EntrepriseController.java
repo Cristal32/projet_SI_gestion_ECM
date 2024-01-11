@@ -42,7 +42,7 @@ public class EntrepriseController {
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Entreprise> getEntrepriseById(@PathVariable("id") int id){
+	public ResponseEntity<Entreprise> getEntrepriseById(@PathVariable("id") String id){
 		Entreprise entreprise = entrepriseService.findEntrepriseById(id);
 		return new ResponseEntity<>(entreprise, HttpStatus.OK);
 	}
@@ -65,7 +65,7 @@ public class EntrepriseController {
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteEntreprise(@PathVariable("id") int id){
+	public ResponseEntity<?> deleteEntreprise(@PathVariable("id") String id){
 		entrepriseService.deleteEntreprise(id);
 		return new ResponseEntity<>(HttpStatus.OK); 
 	}

@@ -5,10 +5,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.projetSI.modal.Tuteur;
+import com.example.projetSI.modal.Acquerir;
 
 @Repository
-public interface TuteurDao extends JpaRepository<Tuteur, String> {
-	Optional<Tuteur> findTuteurById(String id);
-	void deleteTuteurById(String id);
+public interface AcquerirDao extends JpaRepository<Acquerir, Acquerir.AcquerirId> {
+	Optional<Acquerir> findAcquerirById(Acquerir.AcquerirId id);
 }

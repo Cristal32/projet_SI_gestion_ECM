@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.example.projetSI.modal.Entreprise;
 
 @Repository
-public interface EntrepriseDao extends JpaRepository<Entreprise, Integer> {
-	Optional<Entreprise> findEntrepriseById(int id);
+public interface EntrepriseDao extends JpaRepository<Entreprise, String> {
+	Optional<Entreprise> findEntrepriseById(String id);
+	void deleteEntrepriseById(String id);
 
 }

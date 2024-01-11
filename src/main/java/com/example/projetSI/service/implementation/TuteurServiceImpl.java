@@ -23,7 +23,7 @@ public class TuteurServiceImpl implements TuteurService{
 		
 	// ---------------------------- get type stage by their id ----------------------------
 	@Override
-	public Tuteur findTuteurById(int id) {
+	public Tuteur findTuteurById(String id) {
 		return tuteurDao.findTuteurById(id).orElse(null);
 	}
 	
@@ -41,7 +41,7 @@ public class TuteurServiceImpl implements TuteurService{
 	
 	// ---------------------------- delete type stage by id ----------------------------
 	@Override
-	public void deleteTuteur(int id) {
+	public void deleteTuteur(String id) {
 		tuteurDao.deleteById(id);
 	}
 

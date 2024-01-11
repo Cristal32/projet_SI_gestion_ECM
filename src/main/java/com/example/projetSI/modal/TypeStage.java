@@ -24,14 +24,14 @@ public class TypeStage implements Serializable {
     private int id;
 	
 	@Column(name = "Nbr semaines")
-    private String nbr_semaines;
+    private int nbr_semaines;
 	
 	//constructeurs
 	
 	public TypeStage() {
     }
 
-    public TypeStage(int id, String nbr_semaines) {
+    public TypeStage(int id, int nbr_semaines) {
     	this.id = id;
         this.nbr_semaines = nbr_semaines;
     }
@@ -42,7 +42,7 @@ public class TypeStage implements Serializable {
     	return this.id;
     }
     
-    public String getNbrSemaines() {
+    public int getNbrSemaines() {
     	return this.nbr_semaines;
     }
     
@@ -52,7 +52,7 @@ public class TypeStage implements Serializable {
     	this.id = id;
     }
     
-    public void setNbrSemaines(String nbr_semaines) {
+    public void setNbrSemaines(int nbr_semaines) {
     	this.nbr_semaines = nbr_semaines;
     }
 }

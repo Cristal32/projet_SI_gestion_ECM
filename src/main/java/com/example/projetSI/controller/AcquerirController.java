@@ -42,7 +42,7 @@ public class AcquerirController {
 	}
 	
 	@GetMapping("/get/{typeStageId}/{competenceId}")
-	public ResponseEntity<Acquerir> getEtudiantById(@PathVariable int typeStageId, @PathVariable String competenceId){
+	public ResponseEntity<Acquerir> getAcquerirById(@PathVariable int typeStageId, @PathVariable String competenceId){
 		Acquerir acquerir = acquerirService.findAcquerirById(typeStageId, competenceId);
 		return new ResponseEntity<>(acquerir, HttpStatus.OK);
 	}

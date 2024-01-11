@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Date stage")
-public class Date_stage implements Serializable{
+public class DateStage implements Serializable{
 
 	/**
 	 * 
@@ -43,11 +43,11 @@ public class Date_stage implements Serializable{
 	
 	//constructeurs
 	
-	public Date_stage() {
+	public DateStage() {
 		
 	}
 	
-	public Date_stage(TypeStage type_stage, Annee annee, Date debut, Date fin) {
+	public DateStage(TypeStage type_stage, Annee annee, Date debut, Date fin) {
 		this.type_stage = type_stage;
 		this.annee = annee;
 		this.debut = debut;
@@ -55,6 +55,10 @@ public class Date_stage implements Serializable{
 	}
 	
 	//getters
+	
+	public DateStageId getId() {
+		return this.id;
+	}
 	
 	public TypeStage getTypeStage() {
 		return this.type_stage;
@@ -64,15 +68,19 @@ public class Date_stage implements Serializable{
 		return this.annee;
 	}
 	
-	public Date getDebut() {
+	public Date getDateDeb() {
 		return this.debut;
 	}
 	
-	public Date getFin() {
+	public Date getDateFin() {
 		return this.fin;
 	}
 	
 	//setters
+	
+	public void setId(DateStageId id) {
+		this.id = id;
+	}
 	
 	public void setTypeStage(TypeStage type_stage) {
 		this.type_stage = type_stage;
@@ -82,16 +90,16 @@ public class Date_stage implements Serializable{
 		this.annee = annee;
 	}
 	
-	public void setDebut(Date debut) {
+	public void setDateDeb(Date debut) {
 		this.debut = debut;
 	}
 	
-	public void setFin(Date fin) {
+	public void setDateFin(Date fin) {
 		this.fin = fin;
 	}
 	
 	@Embeddable
-	public class DateStageId implements Serializable {
+	public static class DateStageId implements Serializable {
 
 	    /**
 		 * 

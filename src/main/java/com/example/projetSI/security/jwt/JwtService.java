@@ -1,5 +1,6 @@
 package com.example.projetSI.security.jwt;
 
+import com.example.projetSI.security.services.UserDetailsImpl;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -45,6 +46,7 @@ public class JwtService {
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
+                .claim("userId", ((UserDetailsImpl) userDetails).getId())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000*60*26))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)

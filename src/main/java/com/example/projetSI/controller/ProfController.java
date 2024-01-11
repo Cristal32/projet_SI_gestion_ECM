@@ -5,6 +5,7 @@ import com.example.projetSI.service.ProfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,12 +25,14 @@ public class ProfController {
     // ================================= GET Mapping =================================
 
     @GetMapping("/getAll")
+//    @PreAuthorize("hasAuthority('MANAGE_PROFS')")
     public ResponseEntity<List<Prof>> getAllProfs(){
         List<Prof> profs = profService.getAllProfs();
         return new ResponseEntity<>(profs, HttpStatus.OK);
     }
 
     @GetMapping("/get/{id}")
+//    @PreAuthorize("hasAuthority('MANAGE_PROF')")
     public ResponseEntity<Prof> getProfById(@PathVariable("id") int id){
         Prof prof = profService.findProfById(id);
         return new ResponseEntity<>(prof, HttpStatus.OK);
@@ -37,6 +40,7 @@ public class ProfController {
     // ================================= POST Mapping =================================
 
     @PostMapping("/add")
+//    @PreAuthorize("hasAuthority('MANAGE_PROF')")
     public ResponseEntity<Prof> addProf(@RequestBody Prof prof){
         Prof new_prof = profService.addProf(prof);
         return new ResponseEntity<>(new_prof, HttpStatus.CREATED);
@@ -45,6 +49,7 @@ public class ProfController {
     // ================================= PUT Mapping =================================
 
     @PutMapping("/update")
+//    @PreAuthorize("hasAuthority('MANAGE_PROF')")
     public ResponseEntity<Prof> updateProf(@RequestBody Prof prof){
         Prof updated_prof = profService.updateProf(prof);
         return new ResponseEntity<>(updated_prof, HttpStatus.OK);
@@ -53,6 +58,7 @@ public class ProfController {
     // ================================= DELETE Mapping =================================
     @Transactional
     @DeleteMapping("/delete/{id}")
+//    @PreAuthorize("hasAuthority('MANAGE_PROF')")
     public ResponseEntity<?> deleteProf(@PathVariable("id") int id){
         profService.deleteProf(id);
         return new ResponseEntity<>(HttpStatus.OK);

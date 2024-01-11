@@ -10,4 +10,5 @@ public interface StageService {
     public Stage addStage(Stage stage);
     public Stage updateStage(Stage stage);
     public void deleteStage(int id);
+    public List<Stage> getStagesByEtudiantId(int etudiantId);
 }

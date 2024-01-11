@@ -43,4 +43,9 @@ public class StageServiceImpl implements StageService {
     public void deleteStage(int id) {
         stageDao.deleteById(id);
     }
+
+    @Override
+    public List<Stage> getStagesByEtudiantId(int etudiantId) {
+        return stageDao.findByEtudiantId(etudiantId);
+    }
 }

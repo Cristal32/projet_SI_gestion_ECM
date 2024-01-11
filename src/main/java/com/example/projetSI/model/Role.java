@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Entity;
@@ -18,6 +18,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Table(name = "role")
 public class Role implements Serializable{
 

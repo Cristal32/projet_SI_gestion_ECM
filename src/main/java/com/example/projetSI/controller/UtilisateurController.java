@@ -3,6 +3,8 @@ package com.example.projetSI.controller;
 import com.example.projetSI.model.Access;
 import com.example.projetSI.model.Utilisateur;
 import com.example.projetSI.service.UtilisateurService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,9 @@ public class UtilisateurController {
 
     @Autowired
     private final UtilisateurService utilisateurService;
+
+    private static final Logger LOGGER = LogManager.getLogger(UtilisateurController.class);
+
 
     //constructeur
     public UtilisateurController(UtilisateurService utilisateurService) {
@@ -45,9 +50,20 @@ public class UtilisateurController {
     @GetMapping("/getAllAccesByUserId/{id}")
 //    @PreAuthorize("hasAuthority('GET_USERS')")
     public ResponseEntity<Set<Access>> getUtilisateurAccesses(@PathVariable("id") int id){
-        Utilisateur user = utilisateurService.findUtilisateurById(id);
-        Set<Access> userAccesses = utilisateurService.getUtilisateurAccesses(user);
-        return new ResponseEntity<>(userAccesses,HttpStatus.OK);
+        try {
+            LOGGER.info("Received request for userId: {}", id);
+
+            Utilisateur user = utilisateurService.findUtilisateurById(id);
+            LOGGER.info("User found: {}", user);
+
+            Set<Access> userAccesses = utilisateurService.getUtilisateurAccesses(user);
+            LOGGER.info("User accesses retrieved: {}", userAccesses);
+
+            return new ResponseEntity<>(userAccesses, HttpStatus.OK);
+        }catch (Exception e){
+            LOGGER.error("Error while processing request:", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     // ================================= POST Mapping =================================

@@ -3,13 +3,13 @@ package com.example.projetSI.controller;
 
 import com.example.projetSI.model.Candidat;
 import com.example.projetSI.model.FileData;
-import com.example.projetSI.model.Promo;
 import com.example.projetSI.service.CandidatService;
 import com.example.projetSI.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,6 +36,7 @@ public class CandidatController {
     // ================================= GET Mapping =================================
 
     @GetMapping("/getAll")
+//    @PreAuthorize("hasAuthority('GET_ALL_CANDIDATS')")
     public ResponseEntity<List<Candidat>> getAllCandidats(){
         List<Candidat> candidats = candidatService.getAllCandidats();
         // Filter out candidates with 'refused' and 'accepted' statuses
@@ -46,6 +47,7 @@ public class CandidatController {
     }
 
     @GetMapping("/get/{email}")
+//    @PreAuthorize("hasAuthority('GET_CANDIDAT')")
     public ResponseEntity<Candidat> getAccessByEmail(@PathVariable("email") String email){
         Candidat candidat = candidatService.findCandidatByEmail(email);
         return new ResponseEntity<>(candidat, HttpStatus.OK);
@@ -53,12 +55,14 @@ public class CandidatController {
     // ================================= POST Mapping =================================
 
     @PostMapping(value = "/add")
+//    @PreAuthorize("hasAuthority('ADD_CANDIDAT')")
     public ResponseEntity<Candidat> addCandidat(@RequestBody Candidat candidat){
         Candidat newCandidat = candidatService.addCandidat(candidat);
         return new ResponseEntity<>(newCandidat, HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/addCandidatWithDossier", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+//    @PreAuthorize("hasAuthority('ADD_CANDIDAT_WITH_DOSSIER')")
     public ResponseEntity<?> addCandidatWithDossier(@RequestPart("candidatData") Candidat candidat, @RequestPart("dossier") MultipartFile dossier) throws IOException {
         try {
             if(dossier != null && !dossier.isEmpty()) {
@@ -75,7 +79,8 @@ public class CandidatController {
     // ================================= PUT Mapping =================================
 
     @PutMapping("/update")
-    public ResponseEntity<Candidat> updateAccess(@RequestBody Candidat candidat){
+//    @PreAuthorize("hasAuthority('UPDATE_CANDIDAT')")
+    public ResponseEntity<Candidat> updateCandidat(@RequestBody Candidat candidat){
         Candidat updatedCandidat = candidatService.updateCandidat(candidat);
         return new ResponseEntity<>(updatedCandidat, HttpStatus.OK);
     }
@@ -83,6 +88,7 @@ public class CandidatController {
     // ================================= DELETE Mapping =================================
     @Transactional
     @DeleteMapping("/delete/{email}")
+//    @PreAuthorize("hasAuthority('MANAGE_CANDIDAT')")
     public ResponseEntity<?> deleteCandidat(@PathVariable("email") String email){
         candidatService.deleteCandidat(email);
         return new ResponseEntity<>(HttpStatus.OK);

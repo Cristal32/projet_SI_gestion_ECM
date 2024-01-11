@@ -5,6 +5,7 @@ import com.example.projetSI.service.EntrepriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,12 +25,14 @@ public class EntrepriseController {
     // ================================= GET Mapping =================================
 
     @GetMapping("/getAll")
+//    @PreAuthorize("hasAuthority('GET_ENTREPRISES')")
     public ResponseEntity<List<Entreprise>> getAllEntreprises(){
         List<Entreprise> entreprises = entrepriseService.getAllEntreprises();
         return new ResponseEntity<>(entreprises, HttpStatus.OK);
     }
 
     @GetMapping("/get/{siret}")
+//    @PreAuthorize("hasAuthority('GET_ENTREPRISE')")
     public ResponseEntity<Entreprise> getEntrepriseBySiret(@PathVariable("siret") String siret){
         Entreprise entreprise = entrepriseService.findEntrepriseBySiret(siret);
         return new ResponseEntity<>(entreprise, HttpStatus.OK);
@@ -37,6 +40,7 @@ public class EntrepriseController {
     // ================================= POST Mapping =================================
 
     @PostMapping("/add")
+//    @PreAuthorize("hasAuthority('ADD_ENTREPRISE')")
     public ResponseEntity<Entreprise> addEntreprise(@RequestBody Entreprise entreprise){
         Entreprise new_entreprise = entrepriseService.addEntreprise(entreprise);
         return new ResponseEntity<>(new_entreprise, HttpStatus.CREATED);
@@ -45,6 +49,7 @@ public class EntrepriseController {
     // ================================= PUT Mapping =================================
 
     @PutMapping("/update")
+//    @PreAuthorize("hasAuthority('UPDATE_ENTREPRISE')")
     public ResponseEntity<Entreprise> updateEntreprise(@RequestBody Entreprise entreprise){
         Entreprise updated_entreprise = entrepriseService.updateEntreprise(entreprise);
         return new ResponseEntity<>(updated_entreprise, HttpStatus.OK);
@@ -53,6 +58,7 @@ public class EntrepriseController {
     // ================================= DELETE Mapping =================================
     @Transactional
     @DeleteMapping("/delete/{siret}")
+//    @PreAuthorize("hasAuthority('DELETE_ENTREPRISE')")
     public ResponseEntity<?> deleteEntreprise(@PathVariable("siret") String siret){
         entrepriseService.deleteEntreprise(siret);
         return new ResponseEntity<>(HttpStatus.OK);

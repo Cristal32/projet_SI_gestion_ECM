@@ -31,7 +31,7 @@ public class Utilisateur implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "role_id")
     private Role role;
 

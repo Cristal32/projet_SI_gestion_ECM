@@ -6,6 +6,7 @@ https://github.com/Cristal32/SI_Angular_front_gestionECM
 
 # Table des matières
 
+- [Comment utiliser le code](#comment-utiliser-le-code)
 - [Dossier d'analyse](#dossier-danalyse)
   - [Partie donnnées](#partie-donnnées)
     - [Dictionnaire de donnnées](#dictionnaire-de-donnnées)
@@ -23,6 +24,10 @@ https://github.com/Cristal32/SI_Angular_front_gestionECM
       - [MCT - inscriptions](#mct---inscriptions)
       - [MOT - inscriptions](#mot---inscriptions)
 - [Contributeurs](#contributeurs)
+
+# Comment utiliser le code
+
+Pour pouvoir tester l'application, il suffit d'executer le fichier `ProjetSiApplication.java` dans le chemin `src/main/java/com/example/projetSI/`
 
 # Dossier d'analyse
 

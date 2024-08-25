@@ -1,4 +1,4 @@
-# Application backend pour gestion des stages d'une école (ECM)
+# Application backend pour gestion des étudiants d'une école (ECM) et de leurs stages
 
 # Frontend
 Pour voir la partie frontend: 

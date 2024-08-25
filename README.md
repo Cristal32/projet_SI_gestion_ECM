@@ -4,6 +4,26 @@
 Pour voir la partie frontend: 
 https://github.com/Cristal32/SI_Angular_front_gestionECM
 
+## Table des matières
+
+- [Dossier d'analyse](#dossier-danalyse)
+  - [Partie donnnées](#partie-donnnées)
+    - [Dictionnaire de donnnées](#dictionnaire-de-donnnées)
+    - [Règles de gestion](#règles-de-gestion)
+    - [MCD: Modèle Conceptuel de Données](#mcd-modèle-conceptuel-de-données)
+  - [Partie traitements](#partie-traitements)
+    - [Acteurs](#acteurs)
+    - [MCC: Modèle Conceptuel des Communications](#mcc-modèle-conceptuel-des-communications)
+    - [Traitement des stages](#traitement-des-stages)
+      - [GOE - stages: Graphe d’Ordonnancement des Evénements](#goe---stages-graphe-dordonnancement-des-evénements)
+      - [MCT - stages: Modèle Conceptuel des Traitements](#mct---stages-modèle-conceptuel-des-traitements)
+      - [MOT - stages: Modèle Organisationnel des Traitements](#mot---stages-modèle-organisationnel-des-traitements)
+    - [Traitement des inscriptions](#traitement-des-inscriptions)
+      - [GOE - inscriptions](#goe---inscriptions)
+      - [MCT - inscriptions](#mct---inscriptions)
+      - [MOT - inscriptions](#mot---inscriptions)
+- [Contributeurs](#contributeurs)
+
 # Dossier d'analyse
 
 Afin d’assurer une structuration optimale de nos données au sein de notre base, il est nécessaire de suivre une méthodologie de conception rigoureuse. Notre choix s’est porté sur la méthode MERISE (Méthode d’Etude et de Réalisation Informatique pour les Systèmes d’Entreprise), motivé par la clarté et la simplicité de ses modèles, ainsi que par sa capacité à séparer de manière distincte les données des traitements.
@@ -48,7 +68,7 @@ Notre système fait beaucoup de traitements sur les étudiants et leurs stages. 
 <b>- les acteurs internes :</b> l’administration de la plateforme et les commissions ; <br/>
 <b>- les acteurs externes :</b> le candidat et l’étudiant ;
 
-### MCC: Le Modèle Conceptuel des Communications
+### MCC: Modèle Conceptuel des Communications
 
 <p align="center">
   <img src="assets/MCC_niv0.PNG" alt="Le modèle conceptuel des communications niveau 0"/>
@@ -64,13 +84,15 @@ On peut aussi modèliser le MCC niveau 1 pour visualiser le flux de communicatio
 
 En ce qui concerne le traitement des stages, une fois qu'un étudiant est parvenu à décrocher une opportunité de stage chez une entreprise, il doit formuler une demande à l'administration pour avoir une fiche de stage à remplir auprès de l'organisme d'accueil. Ensuite, il doit renvoyer la fiche remplie aux services de stage de l'école, qui seront, dans notre cas, les administrateurs du système.
 
-#### GOE - stages: Le Graphe d’Ordonnancement des Evénements
+#### GOE - stages: Graphe d’Ordonnancement des Evénements
 
 <p align="center">
   <img src="assets/GOE_stages.png" alt="Le graphe d’ordonnancement des événements pour les stages" width="400px"/>
 </p>
 
-#### MCT - stages: Le Modèle Conceptuel des Traitements
+A chaque nouvelle période de stage, lorsque l'étudiant envoie la fiche de stage remplie, les informations de ce stage seront enregistrées dans le système, ensuite, il génère une convention que l'étudiant devra rapporter à l'organisme d'accueil pour signer. Uniquement après avoir reçu cette convention signée qu'on entamera l'assignation d'un professeur encadrant pour assister au stage. En même temps, Le stage débute, et suite à sa fin, l'étudiant doit remettre la fiche d'évaluation auprès du système pour clôturer son stage.
+
+#### MCT - stages: Modèle Conceptuel des Traitements
 
 <p align="center">
   <img src="assets/MCT - Stages.png" alt="Le modèle conceptuel des traitements pour les stages" width="400px"/>
@@ -80,7 +102,7 @@ En ce qui concerne le traitement des stages, une fois qu'un étudiant est parven
   <img src="assets/MCT - Apres stage.png" alt="Le modèle conceptuel des traitements après le stage" width="400px"/>
 </p>
 
-#### MOT - stages: Le Modèle Organisationnel des Traitements
+#### MOT - stages: Modèle Organisationnel des Traitements
 
 <p align="center">
   <img src="assets/MOT-stages.png" alt="Le modèle organisationnel des traitements pour les stages"/>

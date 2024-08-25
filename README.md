@@ -6,7 +6,9 @@ https://github.com/Cristal32/SI_Angular_front_gestionECM
 
 # Table des matières
 
-- [Comment utiliser le code](#comment-utiliser-le-code)
+- [Code](#code)
+  - [Technologies](#technologies) 
+  - [Comment utiliser le code](#comment-utiliser-le-code)
 - [Dossier d'analyse](#dossier-danalyse)
   - [Partie donnnées](#partie-donnnées)
     - [Dictionnaire de donnnées](#dictionnaire-de-donnnées)
@@ -25,8 +27,20 @@ https://github.com/Cristal32/SI_Angular_front_gestionECM
       - [MOT - inscriptions](#mot---inscriptions)
 - [Contributeurs](#contributeurs)
 
-# Comment utiliser le code
+# Code
 
+## Technologies
+
+**Framework:** <span>Spring Boot 3.2.4 <img alt="Spring" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" /> ,
+  Maven <img alt="Maven" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" />,
+  Java 17  <img alt="Java" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" /></san>
+
+**Serveur:** Apache web server <img alt="Apache" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original.svg" /></span>
+
+**Base de donnnées:** PostgreSQL <img alt="PostgreSQL" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" /></span>
+
+
+## Comment utiliser le code
 Pour pouvoir tester l'application, il suffit d'executer le fichier `ProjetSiApplication.java` dans le chemin `src/main/java/com/example/projetSI/`
 
 # Dossier d'analyse

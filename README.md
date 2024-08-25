@@ -18,18 +18,20 @@ Afin d’assurer une structuration optimale de nos données au sein de notre bas
 
 ### Règles de gestion
 
-• Un candidat accepté devient un étudiant
-• Chaque étudiant appartient à une et une seule promotion
-• Chaque promotion est dirigée par un professeur
-• Un professeur peut diriger une ou plusieurs promotions
-• Chaque étudiant est contraint de faire plusieurs stages
-• Un stage est effectué par un seul étudiant
-• Chaque stage est assisté par un tuteur
-• Un tuteur peut assister à plusieurs stages
-• Chaque stage est associé à un seul type de stage
-• Les compétences à acquérir sont définies avec des niveaux spécifiques
-• Les dates de début et de fin de chaque type de stage varient selon l’année.
-• Un utilisateur peut être soit un étudiant soit un administrateur
+<ul>
+  <li>Un candidat accepté devient un étudiant</li>
+  <li>Chaque étudiant appartient à une et une seule promotion</li>
+  <li>Chaque promotion est dirigée par un professeur</li>
+  <li>Un professeur peut diriger une ou plusieurs promotions</li>
+  <li>Chaque étudiant est contraint de faire plusieurs stages</li>
+  <li>Un stage est effectué par un seul étudiant</li>
+  <li>Chaque stage est assisté par un tuteur</li>
+  <li>Un tuteur peut assister à plusieurs stages</li>
+  <li>Chaque stage est associé à un seul type de stage</li>
+  <li>Les compétences à acquérir sont définies avec des niveaux spécifiques</li>
+  <li>Les dates de début et de fin de chaque type de stage varient selon l’année</li>
+  <li>Un utilisateur peut être soit un étudiant soit un administrateur</li>
+</ul>
 
 ### MCD: Modèle Conceptuel de Données
 
@@ -65,17 +67,17 @@ En ce qui concerne le traitement des stages, une fois qu'un étudiant est parven
 #### GOE - stages: Le Graphe d’Ordonnancement des Evénements
 
 <p align="center">
-  <img src="assets/GOE_stages.png" alt="Le graphe d’ordonnancement des événements pour les stages"/>
+  <img src="assets/GOE_stages.png" alt="Le graphe d’ordonnancement des événements pour les stages" width="400px"/>
 </p>
 
 #### MCT - stages: Le Modèle Conceptuel des Traitements
 
 <p align="center">
-  <img src="assets/MCT - Stages.png" alt="Le modèle conceptuel des traitements pour les stages"/>
+  <img src="assets/MCT - Stages.png" alt="Le modèle conceptuel des traitements pour les stages" width="400px"/>
 </p>
 
 <p align="center">
-  <img src="assets/MCT - Apres stage.png" alt="Le modèle conceptuel des traitements après le stage"/>
+  <img src="assets/MCT - Apres stage.png" alt="Le modèle conceptuel des traitements après le stage" width="400px"/>
 </p>
 
 #### MOT - stages: Le Modèle Organisationnel des Traitements
@@ -91,7 +93,7 @@ D'autre part, pour les inscriptions, chaque candidat désirant s'inscrire à l'�
 #### GOE - inscriptions
 
 <p align="center">
-  <img src="assets/GOE_inscriptions.png" alt="Le graphe d’ordonnancement des événements pour les inscriptions"/>
+  <img src="assets/GOE_inscriptions.PNG" alt="Le graphe d’ordonnancement des événements pour les inscriptions"/>
 </p>
 
 #### MCT - inscriptions
@@ -103,6 +105,11 @@ D'autre part, pour les inscriptions, chaque candidat désirant s'inscrire à l'�
 #### MOT - inscriptions
 
 <p align="center">
-  <img src="assets/MOT-Inscriptions.png" alt="Le modèle organisationnel des traitements pour les inscriptions"/>
+  <img src="assets/MOT_Inscriptions.png" alt="Le modèle organisationnel des traitements pour les inscriptions"/>
 </p>
 
+# Contributeurs
+
+- [@Cristal32](https://github.com/Cristal32)
+- [@dodoLR](https://github.com/dodoLR)
+- [@fatibr19](https://github.com/fatibr19)

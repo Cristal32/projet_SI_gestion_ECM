@@ -1,0 +1,127 @@
+.add-tuteur-btn,.edit-btn,.edit-tuteur-btn{
+    background-color: rgb(132, 55, 180);
+    color: white;
+}
+.button-custom-style{
+    background: none;
+    border: none;
+    color: rgb(132, 55, 180);
+}
+/* ========================== card stagiaires ========================== */
+.custom-card{
+    width: 100%; /* Largeur fixe de la carte */
+    height: 500px; /* Hauteur fixe de la carte */
+    border: 1px solid #ccc;
+    overflow: hidden; /* Cache le contenu qui dépasse */
+}
+.custom-card-tuteurs{
+    /* padding: 10px; */
+    overflow: auto; /* Affiche la barre de défilement en cas de dépassement */
+    height: 100%; /* Remplissage total de la hauteur disponible */
+    padding-top: 0px; 
+}
+.custom-table {
+width: 100%;
+border-collapse: collapse;
+}
+.custom-table thead{
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+}
+.custom-table th, td {
+padding: 8px;
+text-align: left;
+}
+/* ============================================================================== */
+.create-tuteur-btn,.tuteurs-div{
+    display: inline-block;
+}
+.create-tuteur-btn{
+    float: right;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+}
+.input-div{
+    display:inline-block;
+    /*background: rgb(190, 190, 190);*/
+    margin-right: 50px;
+}
+.label-elem{
+    margin-top: 7px;
+    margin-left: 9px;
+}
+.search-btn{
+    border: none;
+    height: 40px;
+    width: 40px;
+}
+.search-container{
+    width: 350px !important;
+}
+.stage-detail{
+    display: flex;
+}
+.tuteur-detail-btn{
+    margin-right: 10px;
+    color: rgb(107, 24, 191);
+}
+.label-elem{
+    margin-top: 7px;
+    margin-left: 9px;
+}
+.list-tuteurs{
+    margin-bottom: 15px;
+}
+
+/* ----------------- edit user modal ----------------- */
+.form-wrapper{
+    border: 1px solid rgb(229, 216, 239); 
+    padding: 10px; 
+    margin-bottom: 10px;
+}
+.edit-tuteur-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* .selected-encadrant-value{
+    border: 1px solid rgb(107, 24, 191); 
+    padding: 4px;
+    color: rgb(107, 24, 191);
+    border-radius: 15px;
+} */
+.tab-navigation {
+    overflow: hidden;
+    border: none;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab-navigation button {
+    background-color: inherit;
+    border: 1px solid rgb(226, 226, 226);
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab-navigation button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab-navigation button.active {
+    background-color: #ffffff;
+    border: none;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }

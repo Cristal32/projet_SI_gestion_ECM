@@ -1,0 +1,205 @@
+<div class="card"> 
+    <div class="card-header"><strong style="color:rgb(107, 24, 191);">Tuteurs</strong></div>
+    <div class="card-body">
+
+        <!-----------------------searchbar--------------------------------------------->
+
+        <div class="input-group mb-3 search-container">
+            <input type="text" class="form-control" placeholder="Chercher un tuteur" aria-label="Recipient's stage" aria-describedby="basic-addon2" id="search-input" (keyup.enter)="filterResults(filter.value)" #filter>
+            <div class="input-group-append" (click)="resetFilteredList(filter)">
+                <span class="input-group-btn" id="basic-addon2">
+                    <button class="search-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(107, 24, 191);">
+                            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </div>
+    <!--------------------------------liste tuteurs------------------------------------->
+        <div class="card list-tuteurs custom-card">
+            <div class="card-header">
+                <!-- create user button -->
+                <button type="button" class="btn create-tuteur-btn" name="create-tuteur-btn" data-bs-toggle="modal" data-bs-target="#createTuteurModal" title="Créer nouveau tuteur">
+                    +
+                </button> 
+            </div>
+            <div class="card-header" style="height: 30px;">
+            </div>
+            <div class="card-body custom-card-body">
+                <table class="table table-striped table-hover custom-table" id="tuteurs-table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Tel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let tuteur of filteredListeTuteurs" class="info-row"> 
+                    
+                    <td>{{tuteur.id}}</td>
+                    <td>{{tuteur.nom}}</td>
+                    <td>{{tuteur.prenom}}</td>
+                    <td>{{tuteur.tel}}</td>
+                    <td>
+                        <!--edit icon-->
+                        <button type="button" class="btn edit-tuteur-pen-btn" name="edit-tuteur-btn" data-bs-toggle="modal" data-bs-target="#editTuteurModal" (click)="assignSelectedTuteur(tuteur); assignEditedTuteur()" style="color:rgb(107, 24, 191);" title="Editer tuteur">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </button>
+                        <!--delete icon-->
+                        <button type="button" class="btn delete-tuteur-x-btn" name="delete-tuteur-btn" data-bs-toggle="modal" data-bs-target="#deleteTuteurModal" (click)="assignSelectedTuteur(tuteur); assignDeletedTuteur()" style="color:rgb(107, 24, 191);" title="Supprimer tuteur">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button>
+                    </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    <!-- </div> -->
+<!-- </div> -->
+
+<!---===================== create stage modal ====----------------------------->
+<div class="modal fade" id="createTuteurModal" tabindex="-1" aria-labelledby="createTuteurModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editTuteurModalLabel">Nouveau Tuteur</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="form" id="create-tuteur-form" (ngSubmit)="f.form.valid && createTuteurForm()" #f="ngForm" novalidate> 
+                <div class="modal-body edit-tuteur-modal-body">
+                    <!-- Tuteur infos -->
+                        <div class="form-wrapper">
+                            <div class="input-div" >
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="TuteurId_modelInput">Code Tuteur <span style="color: red">*</span></label>
+                                        <input type="number" class="form-control input-elem" aria-label="TuteurId" aria-describedby="basic-addon1" id="TuteurId_modelInput" name="TuteurId" #id_tuteur="ngModel" [(ngModel)]="form.id_tuteur" required>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="TuteurNomTuteur_modelInput">Nom Tuteur <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="Nom Tuteur" aria-describedby="basic-addon1" id="TuteurNomTuteur_modelInput" name="TuteurNomTuteur" #nom_tuteur="ngModel" [(ngModel)]="form.nom_tuteur" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-div">
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="TuteurPrenomTuteur_modelInput">Prenom Tuteur <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="PrenomTuteur" aria-describedby="basic-addon1" id="TuteurPrenomTuteur_modelInput" name="TuteurPrenomTuteur" #prenom_tuteur="ngModel" [(ngModel)]="form.prenom_tuteur" required>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="TuteurTelTuteur_modelInput">Tel Tuteur <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="TelTuteur" aria-describedby="basic-addon1" id="TuteurTelTuteur_modelInput" name="TuteurTelTuteur" #tel_tuteur="ngModel" [(ngModel)]="form.tel_tuteur" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn edit-tuteur-btn" name="edit-tuteur-btn" id="edit-tuteur-btn">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== edit tuteur modal ======================== -->
+<div class="modal fade" id="editTuteurModal" tabindex="-1" aria-labelledby="editTuteurModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editTuteurModalLabel">Editer tuteur</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="editTuteurForm()"> 
+            <div class="modal-body edit-tuteur-modal-body">
+                    <div class="form-wrapper">
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="tuteurID_modelInput">Code Tuteur</label>
+                                    <input type="text" class="form-control input-elem" aria-label="ID" aria-describedby="basic-addon1" id="tuteurID_modelInput" name="tuteurID" [value]="selectedTuteur.id" [(ngModel)]="editedTuteur.id">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="tuteurEntrepriseRaisonSocial_modelInput">Entreprise</label>
+                                    <select class="form-control" name="tuteurEntrepriseRaisonSocial" [(ngModel)]="editedTuteur.entreprise.raison_social" ngModel>
+                                        <option *ngFor="let tuteur of ListeTuteurs" [ngValue]="selectedTuteur.entreprise.raison_social">{{tuteur.entreprise.raison_social}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="tuteurNom_modelInput">Nom Tuteur</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="tuteurNom_modelInput" name="tuteurNom" [value]="selectedTuteur.nom" [(ngModel)]="editedTuteur.nom">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="tuteurPrenom_modelInput">Prenom Tuteur</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Prenom" aria-describedby="basic-addon1" id="tuteurPrenom_modelInput" name="tuteurPrenom" [value]="selectedTuteur.prenom" [(ngModel)]="editedTuteur.prenom">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="tuteurTel_modelInput">Tel Tuteur</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Tel" aria-describedby="basic-addon1" id="tuteurTel_modelInput" name="tuteurTel" [value]="selectedTuteur.tel" [(ngModel)]="editedTuteur.tel">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn edit-tuteur-btn" name="edit-tuteur-btn" id="edit-tuteur-btn" data-bs-dismiss="modal">Enregistrer</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== delete stagiaire modal ============================== -->
+
+<div class="modal fade" id="deleteTuteurModal" tabindex="-1" aria-labelledby="deleteTuteurModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteTuteurModalLabel">Supprimer {{selectedTuteur.nom}} {{selectedTuteur.prenom}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>Etes-vous sûrs de vouloir supprimer ce tuteur?<br><br></div>
+            <form (ngSubmit) = "deleteTuteurForm()"> 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn delete-tuteur-btn btn-danger" name="delete-tuteur-btn" id="delete-tuteur-btn" data-bs-dismiss="modal">Supprimer</button>
+                  </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

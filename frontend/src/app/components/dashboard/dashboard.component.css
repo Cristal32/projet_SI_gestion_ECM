@@ -1,0 +1,21 @@
+.dashboard-container{
+    background-color: rgb(233, 233, 233);
+    height: 753px;
+}
+.dashboard-body-container{
+    position: absolute;
+    top: 81px;
+    background: rgb(233, 233, 233);
+    width:80%;
+    height: 650px;
+    margin-left: 20px;
+    padding: 10px;
+    border: 1px solid rgb(184, 184, 184);
+}
+.sidebar{
+    margin-top: -75px;
+    margin-left: -30px;
+}
+.sidebar,.dashboard-body-container{
+    display: inline-block;
+}

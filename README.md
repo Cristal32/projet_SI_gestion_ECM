@@ -1,8 +1,4 @@
-# Application backend pour gestion des étudiants d'une école (ECM) et de leurs stages
-
-# Frontend
-Pour voir la partie frontend: 
-https://github.com/Cristal32/SI_Angular_front_gestionECM
+# Application pour gestion des étudiants d'une école (ECM) et de leurs stages
 
 # Table des matières
 
